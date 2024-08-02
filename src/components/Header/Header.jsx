@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <nav className="bg-gray-800 p-4 text-white">
+        <header className="bg-gray-800 p-4 text-white">
             <div className="container mx-auto flex items-center">
                 <img 
                 src="/images/icon-movie.png" 
@@ -19,7 +19,7 @@ const Header = () => {
                         <li><Link to="/daftarsaya">Profile</Link></li>
                     </ul>
             </div>
-        </nav>
+        </header>
 
     );
 };
