@@ -3,7 +3,7 @@ import InputForm from "../Elements/Input";
 
 const FormLogin = () => {
     return (
-        <form className="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg">
+        <form className="max-w-md mx-auto p-4 bg-slate-500 shadow-md rounded-lg">
             <InputForm
                 label="Username"
                 type="text"
