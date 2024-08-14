@@ -5,7 +5,6 @@ const melanjutkanTontonFilm = [
         id: 1,
         name: "Don't Look Up",
         image: "/images/MelanjutkanTontonFilm/tnt1.png",
-
     },
     {
         id: 2,
@@ -26,13 +25,13 @@ const melanjutkanTontonFilm = [
 
 const MelanjutkanTontonFilm = () => (
     <div className="bg-slate-900 text-white py-5">
-        <h2 className="text-xl font-semibold mb-4">Melanjutkan Tonton Film</h2>
-        <div className="flex flex-wrap justify-between">
+        <h2 className="text-xl font-semibold mb-4 text-left">Melanjutkan Tonton Film</h2>
+        <div className="flex flex-wrap items-center gap-4">
             {melanjutkanTontonFilm.map((item) => (
-                <CardBeranda key={item.id}>
+                <CardBeranda key={item.id} className="w-48">
                     <CardBeranda.Header image={item.image} />
                     <CardBeranda.Body name={item.name}>
-                        {item.description}
+                        <p className="text-sm">{item.description}</p>
                     </CardBeranda.Body>
                     <CardBeranda.Footer />
                 </CardBeranda>

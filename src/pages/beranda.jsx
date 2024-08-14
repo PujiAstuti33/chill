@@ -4,6 +4,7 @@ import TopRatingFilmHariIni from "../components/Fragments/TopRatingFilmHariIni";
 import FilmTrending from "../components/Fragments/FilmTrending";
 import RilisBaru from "../components/Fragments/RilisBaru";
 import Footer from "../components/Footer/Footer";
+import MovieApp from "../components/Fragments/MovieApp";
 
 
 
@@ -14,8 +15,9 @@ const Beranda = () => (
         <TopRatingFilmHariIni />
         <FilmTrending />
         <RilisBaru /> 
-        <Footer /> 
-                     
+        <Footer />   
+        <MovieApp />             
     </div>
+    
 );
 export default Beranda;

@@ -4,14 +4,12 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
-import ErrorPage from "./pages/404";
 import Beranda from "./pages/beranda";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello word</div>,
-    errorElement: <ErrorPage />
+    element: <Beranda />,
   },
   {
     path: "/login",

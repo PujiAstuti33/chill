@@ -25,16 +25,16 @@ const topRatingFilmHariIni = [
 
 const TopRatingFilmHariIni = () => (
     <div className="bg-slate-900 text-white py-5">
-        <h2 className="text-xl font-semibold mb-2">Top Rating Film Hari Ini</h2>
-        <div className="flex flex-wrap justify-center">
+        <h2 className="text-xl font-semibold mb-4 text-left">Top Rating Film Hari Ini</h2>
+        <div className="flex flex-wrap items-center gap-4">
             {topRatingFilmHariIni.map((item) => (
-                <CardBeranda key={item.id}>
-                <CardBeranda.Header image={item.image} />
-                <CardBeranda.Body name={item.name}>
-                    {item.description}
-                </CardBeranda.Body>
-                <CardBeranda.Footer />
-            </CardBeranda>
+                <CardBeranda key={item.id} className="w-48">
+                    <CardBeranda.Header image={item.image} />
+                    <CardBeranda.Body name={item.name}>
+                        <p className="text-sm">{item.description}</p>
+                    </CardBeranda.Body>
+                    <CardBeranda.Footer />
+                </CardBeranda>
             ))}
         </div>
     </div>
