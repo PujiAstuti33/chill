@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import Beranda from "./pages/beranda";
+import DaftarSaya from "./components/Fragments/DaftarSaya";
+
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,12 @@ const router = createBrowserRouter([
   {
     path: "/beranda",
     element: <Beranda />,
+  },
+  {
+    path:"/daftarsaya", 
+    element: <DaftarSaya />,
   }
+  
 ]);
 
 

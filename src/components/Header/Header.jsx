@@ -1,11 +1,43 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 const Header = () => {
+  const [DaftarSaya, setDaftarSaya] = useState([]);
+
+  useEffect(() => {
+    setDaftarSaya(JSON.parse(localStorage.getItem("DaftarSaya")) || []);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("DaftarSaya", JSON.stringify(DaftarSaya));
+  }, [DaftarSaya]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    window.location.href = "/login";
+  };
+
+  const handleAddToDaftarSaya = (id) => {
+    if (DaftarSaya.find((item) => item.id === id)) {
+      setDaftarSaya(
+        DaftarSaya.map((item) =>
+          item.id === id ? { ...item, qty: (item.qty || 0) + 1 } : item
+        )
+      );
+    } else {
+      setDaftarSaya([...DaftarSaya, { id, qty: 1 }]);
+    }
+  };
+
+  const handleRemoveFromDaftarSaya = (id) => {
+    setDaftarSaya(DaftarSaya.filter((item) => item.id !== id));
+  };
+
   return (
     <header className="bg-gray-800 text-white">
       <div className="container mx-auto flex items-center p-4 justify-between">
-        {/* Flex container for left-aligned items */}
         <div className="flex items-center flex-grow-0">
           <img
             src="/images/icon-movie.png"
@@ -26,22 +58,20 @@ const Header = () => {
           </ul>
         </div>
 
-        {/* Profile icon */}
         <div className="flex-grow-0">
           <Link to="/profile">
             <img
-              src="/images/icon-profile.png" // Ganti dengan path gambar yang sesuai
+              src="/images/icon-profile.png"
               alt="icon-Profile"
-              className="w-8 h-8" // Sesuaikan ukuran gambar sesuai kebutuhan
+              className="w-8 h-8"
             />
           </Link>
         </div>
       </div>
 
-      {/* Section for Background Image and Overlay Content */}
       <div className="relative">
         <img
-          src="/images/duty-after-school.png" // Ganti dengan path gambar yang sesuai
+          src="/images/duty-after-school.png"
           alt="Duty After School"
           className="w-full h-auto object-contain brightness-110"
         />
@@ -65,6 +95,24 @@ const Header = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Contoh penggunaan fungsi delete */}
+      <div className="p-4">
+        <h2 className="text-xl font-bold">Daftar Saya</h2>
+        <ul>
+          {DaftarSaya.map((item) => (
+            <li key={item.id} className="flex items-center justify-between">
+              <span>Item ID: {item.id}, Quantity: {item.qty}</span>
+              <button
+                onClick={() => handleRemoveFromDaftarSaya(item.id)}
+                className="bg-red-600 text-white py-1 px-4 rounded"
+              >
+                Hapus
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );

@@ -24,14 +24,12 @@ const Body = (props) => {
     const { children, name } = props;
     return (
         <div className="px-4 pb-3">
-            <a href="#">
-                <h5 className="text-lg font-semibold text-white">
-                    {name}
-                </h5>
-                <p className="text-sm text-white">
-                    {children}
-                </p>
-            </a>
+            <h5 className="text-lg font-semibold text-white">
+                {name}
+            </h5>
+            <div className="text-sm text-white">
+                {children}
+            </div>
         </div>
     );
 };

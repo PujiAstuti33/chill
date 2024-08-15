@@ -26,7 +26,8 @@ const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-passw
                     alt="Movie Icon" 
                     className="w-8 h-8 mr-1" 
                 />
-                <hi className=" "></hi>
+                {/* Remove or replace this tag */}
+                {/* <hi className=" "></hi> */}
                 <h1 className="text-3xl font-bold mb-2 text-white text-center">
                     CHILL
                 </h1>
