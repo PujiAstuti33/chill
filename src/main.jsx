@@ -6,6 +6,8 @@ import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import Beranda from "./pages/beranda";
 import DaftarSaya from "./components/Fragments/DaftarSaya";
+import DataFetchingComponent from "./components/Fragments/DataFetchingComponent";
+import MainComponent from "./components/Responsive/MainComponent";
 
 
 const router = createBrowserRouter([
@@ -26,16 +28,21 @@ const router = createBrowserRouter([
     element: <Beranda />,
   },
   {
-    path:"/daftarsaya", 
+    path: "/daftarsaya",
     element: <DaftarSaya />,
-  }
+  },
+  {
+    path: "/data-fetching",
+    element: <DataFetchingComponent />,
+  },
+  {
+    path: '/responsive',
+    element: <MainComponent />, 
+  },
   
 ]);
 
-
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>

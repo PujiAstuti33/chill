@@ -99,7 +99,6 @@ const Header = () => {
 
       {/* Contoh penggunaan fungsi delete */}
       <div className="p-4">
-        <h2 className="text-xl font-bold">Daftar Saya</h2>
         <ul>
           {DaftarSaya.map((item) => (
             <li key={item.id} className="flex items-center justify-between">
