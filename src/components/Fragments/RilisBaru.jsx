@@ -24,16 +24,13 @@ const rilisBaru = [
 ];
 
 const RilisBaru = () => (
-    <div className="bg-slate-900 text-white py-5">
+    <div className="bg-slate-900 text-white py-5 px-4 sm:px-6 lg:px-8">
         <h2 className="text-xl font-semibold mb-4 text-left">Rilis Baru</h2>
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {rilisBaru.map((item) => (
-                <CardBeranda key={item.id} className="w-48">
+                <CardBeranda key={item.id} className="w-full">
                     <CardBeranda.Header image={item.image} />
-                    <CardBeranda.Body name={item.name}>
-                        <p className="text-sm">{item.description}</p>
-                    </CardBeranda.Body>
-                    <CardBeranda.Footer />
+                    {/* Hapus CardBeranda.Body dan CardBeranda.Footer jika tidak digunakan */}
                 </CardBeranda>
             ))}
         </div>

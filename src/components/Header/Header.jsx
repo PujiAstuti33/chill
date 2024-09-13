@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 const Header = () => {
   const [DaftarSaya, setDaftarSaya] = useState([]);
 
@@ -37,15 +36,15 @@ const Header = () => {
 
   return (
     <header className="bg-gray-800 text-white">
-      <div className="container mx-auto flex items-center p-4 justify-between">
+      <div className="w-full mx-auto flex items-center p-2 md:p-4 justify-between">
         <div className="flex items-center flex-grow-0">
           <img
             src="/images/icon-movie.png"
             alt="Chill Logo"
-            className="w-12 h-12 mr-4"
+            className="w-12 h-12 md:w-16 md:h-16 mr-4"
           />
-          <h1 className="text-2xl font-bold mr-8">Chill</h1>
-          <ul className="flex space-x-4">
+          <h1 className="text-2xl md:text-3xl font-bold mr-8">Chill</h1>
+          <ul className="flex space-x-4 text-sm md:text-base">
             <li>
               <Link to="/">Series</Link>
             </li>
@@ -63,7 +62,7 @@ const Header = () => {
             <img
               src="/images/icon-profile.png"
               alt="icon-Profile"
-              className="w-8 h-8"
+              className="w-8 h-8 md:w-10 md:h-10"
             />
           </Link>
         </div>
@@ -73,40 +72,38 @@ const Header = () => {
         <img
           src="/images/duty-after-school.png"
           alt="Duty After School"
-          className="w-full h-auto object-contain brightness-110"
+          className="w-full h-auto object-cover"
         />
-        <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center px-12">
-          <h2 className="text-4xl font-bold mb-4">Duty After School</h2>
-          <p className="mb-4 max-w-xl">
+        <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col text-left px-4 md:px-8 lg:px-12 py-4 md:py-6 lg:py-8">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-left md:text-left mt-auto">
+            Duty After School
+          </h2>
+          <p className="text-sm md:text-base lg:text-lg mb-4 max-w-xs md:max-w-sm lg:max-w-md text-left md:text-left">
             Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan,
             Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk
-            siswa sekolah menengah. Mereka pun segera menjadi pejuang garis
-            depan dalam perang.
+            siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang.
           </p>
-          <div className="flex space-x-4">
-            <button className="bg-blue-600 text-white py-2 px-4 rounded-full">
+          <div className="flex flex-wrap gap-2 text-left md:justify-start">
+            <button className="bg-blue-600 text-white py-1 px-3 rounded-full text-xs md:text-base">
               Mulai
             </button>
-            <button className="bg-gray-600 text-white py-2 px-4 rounded-full">
+            <button className="bg-gray-600 text-white py-1 px-3 rounded-full text-xs md:text-base">
               Selengkapnya
             </button>
-            <button className="bg-gray-600 text-white py-2 px-4 rounded-full">
+            <button className="bg-gray-600 bg-opacity-70 text-white py-1 px-3 rounded-full text-xs md:text-base">
               18+
             </button>
           </div>
         </div>
       </div>
-
-      {/* Contoh penggunaan fungsi delete */}
       <div className="p-4">
-        <h2 className="text-xl font-bold">Daftar Saya</h2>
-        <ul>
+        <ul className="space-y-2">
           {DaftarSaya.map((item) => (
             <li key={item.id} className="flex items-center justify-between">
               <span>Item ID: {item.id}, Quantity: {item.qty}</span>
               <button
                 onClick={() => handleRemoveFromDaftarSaya(item.id)}
-                className="bg-red-600 text-white py-1 px-4 rounded"
+                className="bg-red-600 text-white py-1 px-4 rounded text-sm"
               >
                 Hapus
               </button>

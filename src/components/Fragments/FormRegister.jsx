@@ -3,7 +3,7 @@ import InputForm from "../Elements/Input";
 
 const FormRegister = () => {
     return (
-        <form className="max-w-sm mx-auto p-6 bg-slate-500 shadow-md rounded-lg">
+        <form action="">
             <InputForm
                 label="Username"
                 type="text"
@@ -25,9 +25,6 @@ const FormRegister = () => {
                 name="confirmPassword"
                 className="mb-4"
             />
-            <Button classname="bg-slate-600 w-full text-white py-2 rounded-md hover:bg-slate-700">
-                Daftar
-            </Button>
         </form>
     );
 };

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import GoogleAuthButton from "../Elements/Button/GoogleAuthButton";
+import Button from "../Elements/Button";
+
 
 const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-password", registerLink = "/register", loginLink = "/login" }) => {
     const getBackgroundImage = () => {
@@ -9,7 +10,7 @@ const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-passw
             case "register":
                 return '/images/bg-daftar/bg.jpg';
             default:
-                return ''; // Default background or none
+                return ''; 
         }
     };
 
@@ -20,34 +21,28 @@ const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-passw
             className="flex justify-center items-center min-h-screen bg-cover bg-center" 
             style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-            <div className="w-full max-w-md bg-slate-900 p-6">
+            <div className="w-full max-w-md font-bold bg-slate-900 p-6 inset-0 opacity-70">
                 <img 
                     src="/images/icon-movie.png" 
                     alt="Movie Icon" 
-                    className="w-8 h-8 mr-1" 
                 />
-                {/* Remove or replace this tag */}
-                {/* <hi className=" "></hi> */}
+                         
                 <h1 className="text-3xl font-bold mb-2 text-white text-center">
                     CHILL
                 </h1>
-                <p className="text-xl font-semibold text-white mb-2 text-center">
+                <p className="text-xl font-bold text-white mb-2 text-center">
                     {title}
                 </p>
-                <p className="font-medium text-white mb-8 text-center">
+                <p className="font-medium text-white font-bold mb-8 text-center">
                     {type === "login" ? "Selamat datang kembali!" : "Selamat datang!"}
                 </p>
-
-                {/* Form Field */}
                 {children}
-
-                {/* Additional Links */}
-                <div className="flex justify-between text-sm text-slate-300 mt-5">
+                <div className="flex justify-between font-bold text-sm text-white mt-5 mb-4">
                     <p className="text-left flex-grow">
                         {type === "login" ? (
                             <>
                                 Belum punya akun? 
-                                <Link to={registerLink} className="font-bold text-white ml-1">
+                                <Link to={registerLink} className="font-bold text-white hover:underline ml-1">
                                     Daftar
                                 </Link>
                             </>
@@ -69,14 +64,19 @@ const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-passw
                         </Link>
                     )}
                 </div>
-
-                {/* Google Auth Button */}
-                <div className="text-center pt-2">
-                    <p className="font-lato text-white text-sm mb-2">Atau</p>
-                    <GoogleAuthButton>Masuk dengan Google</GoogleAuthButton>
-                </div>
+                    <Button className="w-full bg-gray-800 w-full border text-white mb-4" type="submit">
+                        {type === "login" ? "Masuk" : "Daftar"}
+                    </Button>
+                <div className="w-full text-center mb-4">
+                    <p className="text-sm text-white mb-4">Atau</p>
+                    <button className="w-full py-2 px-4 bg-gray-800 border text-white rounded flex items-center justify-center ">
+                        <img src="/images/google-icon.png" alt="Google Icon" className="w-5 h-6 mr-4" />
+                        <span>Daftar dengan Google</span>
+                    </button>
+                </div>            
             </div>
         </div>
+     
     );
 };
 
