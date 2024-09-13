@@ -97,7 +97,11 @@ const Header = () => {
         </div>
       </div>
       <div className="p-4">
+<<<<<<< HEAD
         <ul className="space-y-2">
+=======
+        <ul>
+>>>>>>> 20244a1dacb33caa3aa833bf1aac171dd98d3f69
           {DaftarSaya.map((item) => (
             <li key={item.id} className="flex items-center justify-between">
               <span>Item ID: {item.id}, Quantity: {item.qty}</span>

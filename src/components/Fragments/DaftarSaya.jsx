@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 const DaftarSaya = () => {
   const [items, setItems] = useState([]);
   const [newItemId, setNewItemId] = useState("");
@@ -10,6 +11,7 @@ const DaftarSaya = () => {
   useEffect(() => {
     setItems(JSON.parse(localStorage.getItem("DaftarSaya")) || []);
   }, []);
+
 
   useEffect(() => {
     localStorage.setItem("DaftarSaya", JSON.stringify(items));
