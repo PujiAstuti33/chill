@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Button from "../Elements/Button";
 
@@ -26,7 +27,7 @@ const AuthLayout = ({ children, type, title, forgotPasswordLink = "/forgot-passw
                     src="/images/icon-movie.png" 
                     alt="Movie Icon" 
                 />
-                         
+                    
                 <h1 className="text-3xl font-bold mb-2 text-white text-center">
                     CHILL
                 </h1>
