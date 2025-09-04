@@ -1,4 +1,3 @@
-// src/index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -14,6 +13,7 @@ import MainComponent from "./components/Responsive/MainComponent";
 
 // Konfigurasi router
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Beranda />,
@@ -39,12 +39,13 @@ const router = createBrowserRouter([
     element: <DataFetchingComponent />,
   },
   {
-    path: '/responsive',
-    element: <MainComponent />, 
+    path: "/responsive",
+    element: <MainComponent />,
   },
   
 ]);
 
+// Render aplikasi
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}> {/* Bungkus RouterProvider dengan Provider */}

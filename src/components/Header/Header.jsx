@@ -6,10 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedList = localStorage.getItem("DaftarSaya");
-    if (savedList) {
-      setDaftarSaya(JSON.parse(savedList));
-    }
+    setDaftarSaya(JSON.parse(localStorage.getItem("DaftarSaya")) || []);
   }, []);
 
   useEffect(() => {
@@ -23,20 +20,21 @@ const Header = () => {
   };
 
   const handleAddToDaftarSaya = (id) => {
-    setDaftarSaya((prev) => {
-      const existingItem = prev.find((item) => item.id === id);
-      if (existingItem) {
-        return prev.map((item) =>
-          item.id === id ? { ...item, qty: item.qty + 1 } : item
-        );
-      } else {
-        return [...prev, { id, qty: 1 }];
-      }
-    });
+    if (DaftarSaya.find((item) => item.id === id)) {
+      setDaftarSaya(
+        DaftarSaya.map((item) =>
+          item.id === id ? { ...item, qty: (item.qty || 0) + 1 } : item
+        )
+      );
+    } else {
+      setDaftarSaya([...DaftarSaya, { id, qty: 1 }]);
+    }
   };
 
   const handleRemoveFromDaftarSaya = (id) => {
-    setDaftarSaya(DaftarSaya.filter((item) => item.id !== id));
+    setDaftarSaya((prevDaftarSaya) =>
+      prevDaftarSaya.filter((item) => item.id !== id)
+    );
   };
 
   return (
@@ -80,16 +78,16 @@ const Header = () => {
           className="w-full h-auto object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col text-left px-4 md:px-8 lg:px-12 py-4 md:py-6 lg:py-8">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 text-left md:text-left mt-auto">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 lg:mb-6 mt-auto">
             Duty After School
           </h2>
-          <p className="text-sm md:text-base lg:text-lg mb-4 max-w-xs md:max-w-sm lg:max-w-md text-left md:text-left">
+          <p className="text-sm md:text-base lg:text-lg mb-4 max-w-xs md:max-w-sm lg:max-w-md">
             Sebuah benda tak dikenal mengambil alih dunia. Dalam keputusasaan,
             Departemen Pertahanan mulai merekrut lebih banyak tentara, termasuk
             siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang.
           </p>
           <div className="flex flex-wrap gap-2 text-left md:justify-start">
-            <button className="bg-blue-600 text-white py-2 px-4 md:py-3 md:px-5 rounded-lg text-sm md:text-base">
+            <button className="bg-blue-600 text-white py-1 px-3 rounded-full text-xs md:text-base">
               Mulai
             </button>
             <button className="bg-gray-600 text-white py-2 px-4 md:py-3 md:px-5 rounded-lg text-sm md:text-base">
@@ -110,6 +108,7 @@ const Header = () => {
               <button
                 onClick={() => handleRemoveFromDaftarSaya(item.id)}
                 className="bg-red-600 text-white py-1 px-4 rounded text-sm"
+                aria-label={`Remove item with ID ${item.id}`}
               >
                 Hapus
               </button>
