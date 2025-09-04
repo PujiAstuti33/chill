@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [DaftarSaya, setDaftarSaya] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setDaftarSaya(JSON.parse(localStorage.getItem("DaftarSaya")) || []);
+    const savedList = localStorage.getItem("DaftarSaya");
+    if (savedList) {
+      setDaftarSaya(JSON.parse(savedList));
+    }
   }, []);
 
   useEffect(() => {
@@ -15,19 +19,20 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   const handleAddToDaftarSaya = (id) => {
-    if (DaftarSaya.find((item) => item.id === id)) {
-      setDaftarSaya(
-        DaftarSaya.map((item) =>
-          item.id === id ? { ...item, qty: (item.qty || 0) + 1 } : item
-        )
-      );
-    } else {
-      setDaftarSaya([...DaftarSaya, { id, qty: 1 }]);
-    }
+    setDaftarSaya((prev) => {
+      const existingItem = prev.find((item) => item.id === id);
+      if (existingItem) {
+        return prev.map((item) =>
+          item.id === id ? { ...item, qty: item.qty + 1 } : item
+        );
+      } else {
+        return [...prev, { id, qty: 1 }];
+      }
+    });
   };
 
   const handleRemoveFromDaftarSaya = (id) => {
@@ -61,7 +66,7 @@ const Header = () => {
           <Link to="/profile">
             <img
               src="/images/icon-profile.png"
-              alt="icon-Profile"
+              alt="Profile Icon"
               className="w-8 h-8 md:w-10 md:h-10"
             />
           </Link>
@@ -84,24 +89,21 @@ const Header = () => {
             siswa sekolah menengah. Mereka pun segera menjadi pejuang garis depan dalam perang.
           </p>
           <div className="flex flex-wrap gap-2 text-left md:justify-start">
-            <button className="bg-blue-600 text-white py-1 px-3 rounded-full text-xs md:text-base">
+            <button className="bg-blue-600 text-white py-2 px-4 md:py-3 md:px-5 rounded-lg text-sm md:text-base">
               Mulai
             </button>
-            <button className="bg-gray-600 text-white py-1 px-3 rounded-full text-xs md:text-base">
+            <button className="bg-gray-600 text-white py-2 px-4 md:py-3 md:px-5 rounded-lg text-sm md:text-base">
               Selengkapnya
             </button>
-            <button className="bg-gray-600 bg-opacity-70 text-white py-1 px-3 rounded-full text-xs md:text-base">
+            <button className="bg-gray-600 bg-opacity-70 text-white py-2 px-4 md:py-3 md:px-5 rounded-lg text-sm md:text-base">
               18+
             </button>
           </div>
         </div>
       </div>
+
       <div className="p-4">
-<<<<<<< HEAD
         <ul className="space-y-2">
-=======
-        <ul>
->>>>>>> 20244a1dacb33caa3aa833bf1aac171dd98d3f69
           {DaftarSaya.map((item) => (
             <li key={item.id} className="flex items-center justify-between">
               <span>Item ID: {item.id}, Quantity: {item.qty}</span>
